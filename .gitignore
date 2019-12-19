@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /Chapter13/Chapter13/My Advisor Results - Chapter13
+*.txt
