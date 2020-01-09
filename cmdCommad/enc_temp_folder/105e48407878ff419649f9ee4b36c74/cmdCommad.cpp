@@ -27,7 +27,4 @@ int main()
 	std::string getStat =  exec("netstat -p udp -a -o");
 	std::cout << "\n"<<getIP<<"\n";
 	std::cout << "\n"<< getStat <<"\n";
-
-
-	
 }
