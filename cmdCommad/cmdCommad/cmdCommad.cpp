@@ -7,6 +7,7 @@
 #include <stdexcept>
 #include <string>
 #include <array>
+#include <Windows.h>
 
 std::string exec(const char* cmd) {
 	std::array<char, 128> buffer;
@@ -23,11 +24,18 @@ std::string exec(const char* cmd) {
 
 int main()
 {
-	std::string getIP =  exec("ping 169.254.61.251");
+	/*std::string getIP =  exec("ping 169.254.61.251");
 	std::string getStat =  exec("netstat -p udp -a -o");
 	std::cout << "\n"<<getIP<<"\n";
-	std::cout << "\n"<< getStat <<"\n";
+	std::cout << "\n"<< getStat <<"\n";*/
 
-
+	std::string pingStr = (std::string) "netstat -p udp -o -n -a | findstr 0.0:1200";
+	while (true)
+	{
+		bool resultCmd = !(bool)std::system(pingStr.c_str());
+		std::cout << "\n" << resultCmd;
+		Sleep(100);
+		std::system("cls");
+	}
 	
 }
