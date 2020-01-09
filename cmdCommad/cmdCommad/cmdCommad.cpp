@@ -38,14 +38,25 @@ int main()
 	//	std::system("cls");
 	//}
 
-	std::string pingStr = (std::string) "netstat -p udp -o -n -a | findstr 0.0:1200";
+	/*std::string pingStr = (std::string) "netstat -p udp -o -n -a | findstr 0.0:1200";
 	std::string getStat = exec("netstat -p udp -o -n -a | findstr 0.0:1200");
 	if (getStat.empty())
 		std::cout << "\nport 1200 is Ready for your program!\n";
 	else
+		std::cout << "\nport 1200 is Busy!!!!\nPlease Close Other Similar Softwares!";*/
+
+
+	HWND hWnd = GetConsoleWindow();
+	ShowWindow(hWnd, SW_HIDE);
+	//ShowWindow(hWnd, SW_MINIMIZE);
+
+	std::string pingStr = (std::string) "ping -n 3 169.168.100.111";
+	bool ipAddress = !(bool)std::system(pingStr.c_str());
+	
+	std::string getStat = exec("netstat -p udp -o -n -a | findstr 100.111:1200");
+	if (getStat.empty())
+		std::cout << "\nport 1200 is Ready for your program!\n";
+	else
 		std::cout << "\nport 1200 is Busy!!!!\nPlease Close Other Similar Softwares!";
-
-
-
 	
 }
