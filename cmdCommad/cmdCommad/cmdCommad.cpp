@@ -29,13 +29,23 @@ int main()
 	std::cout << "\n"<<getIP<<"\n";
 	std::cout << "\n"<< getStat <<"\n";*/
 
+	//std::string pingStr = (std::string) "netstat -p udp -o -n -a | findstr 0.0:1200";
+	//while (true)
+	//{
+	//	bool resultCmd = !(bool)std::system(pingStr.c_str());
+	//	std::cout << "\n" << resultCmd;
+	//	Sleep(100);
+	//	std::system("cls");
+	//}
+
 	std::string pingStr = (std::string) "netstat -p udp -o -n -a | findstr 0.0:1200";
-	while (true)
-	{
-		bool resultCmd = !(bool)std::system(pingStr.c_str());
-		std::cout << "\n" << resultCmd;
-		Sleep(100);
-		std::system("cls");
-	}
+	std::string getStat = exec("netstat -p udp -o -n -a | findstr 0.0:1200");
+	if (getStat.empty())
+		std::cout << "\nport 1200 is Ready for your program!\n";
+	else
+		std::cout << "\nport 1200 is Busy!!!!\nPlease Close Other Similar Softwares!";
+
+
+
 	
 }
